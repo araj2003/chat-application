@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    name:{
+    user_name:{
         type:String,
-        requried:true,
+        required:true,
         min:3,
         max:20,
         unique:true
@@ -23,10 +23,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:""
     },
-    is_profile:{
+    is_avatar:{
         type: Boolean,
         default:false,
     }
 })
 
-mongoose.export = mongoose.model("user",userSchema)
+module.exports = mongoose.model("user",userSchema)
