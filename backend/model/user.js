@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         requried:true,
         min:8
     },
-    profile_pic:{
+   profile_pic :{
         type:String,
         default:""
     },
@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default:false,
     }
-})
+},
+{
+    timestamps:true
+}
+)
 
 module.exports = mongoose.model("user",userSchema)

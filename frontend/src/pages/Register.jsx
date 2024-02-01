@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { registerRoute } from '../utils/url';
 import axios from 'axios';
+import { useContext } from 'react'
+import { userContext } from '../../context/userContext'
+
 
 const Register = () => {
+  const {isLogin,setIsLogin} = useContext(userContext)
   const navigate = useNavigate();
   const [data, setData] = useState({
     user_name: "",
@@ -21,6 +25,8 @@ const Register = () => {
     draggable: true,
     theme: "dark"
   };
+
+ 
 
   const handleValidation = () => {
     const { password, confirmPassword, user_name, email } = data;
@@ -68,10 +74,7 @@ const Register = () => {
         }
   
         if (responseData.status === true) {
-          localStorage.setItem(
-            "chat-app-user",
-            JSON.stringify(responseData.user)
-          );
+          setIsLogin(true)
           navigate("/");
         }
       } catch (error) {

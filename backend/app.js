@@ -3,6 +3,8 @@ const app = express()
 require('dotenv').config()
 const connectDB = require('./database/connect')
 const authRouter = require('./routes/authRoute')
+const chatRouter = require('./routes/chatRoutes')
+const avatarRouter = require('./routes/avatarRoute')
 const cors = require('cors')
 //middleware
 app.use(cors())
@@ -15,6 +17,8 @@ app.get('/',(req,res) => {
 })
 
 app.use('/api/auth',authRouter)
+app.use('/api',avatarRouter)
+app.use('/api/chat',chatRouter)
 
 const port = 8000
 
