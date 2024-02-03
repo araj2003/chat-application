@@ -11,6 +11,6 @@ const router = express.Router()
 router.route('/').post(protect,sendMessage)
 
 //get all message from a chat
-router.route('/:chatId').get(protect,getMessage)
+router.route('/:id').get(protect,getMessage)
 
 module.exports = router
